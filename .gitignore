@@ -44,6 +44,7 @@ build
 
 # Babel build
 lib
+dist
 
 # Mac
 .DS_Store

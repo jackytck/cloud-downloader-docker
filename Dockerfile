@@ -1,4 +1,4 @@
-FROM node:9-slim
+FROM jackytck/docker-node-imagemagick:v0.0.1
 
 RUN apt-get update && \
     apt-get install -y \
@@ -12,6 +12,6 @@ WORKDIR /app
 COPY package.json .
 RUN yarn install --production
 
-COPY src src
+COPY dist dist
 
 CMD ["yarn", "start"]

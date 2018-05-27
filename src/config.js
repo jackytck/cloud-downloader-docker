@@ -18,7 +18,7 @@ const {
 const config = {
   host: {
     name: HOST_NAME,
-    type: HOST_TYPE,
+    type: HOST_TYPE
   },
   rabbit: {
     host: RABBIT_HOST,
@@ -39,4 +39,5 @@ const config = {
   },
   concurrency: CONCURRENCY
 }
+
 module.exports = config

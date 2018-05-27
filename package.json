@@ -4,7 +4,9 @@
   "author": "Jacky Tang",
   "license": "MIT",
   "scripts": {
-    "start": "node -r dotenv/config src/index.js"
+    "build": "babel src -d dist",
+    "dev": "node -r dotenv/config src/index.js",
+    "start": "node -r dotenv/config dist/index.js"
   },
   "standard": {
     "parser": "babel-eslint"
