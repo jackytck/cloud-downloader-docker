@@ -14,16 +14,6 @@ import { pick } from 'lodash'
 import sharp from 'sharp'
 
 /**
- * Bucket regions.
- @todo
- */
-const S3BucketToRegion = new Map([
-])
-
-const S3ChinaBuckets = [
-]
-
-/**
  * Data directories.
  */
 fs.ensureDir('./data/downloading')
@@ -44,6 +34,8 @@ const {
   RABBIT_QUEUE_MODEL_RESULT,
   RABBIT_EXCHANGE_ALTI_HEART_PING,
   RABBIT_QUEUE_ALTI_HEART_PONG,
+  BUCKETS,
+  S3_CHINA_BUCKETS,
   ALTI_VERBOSE,
   ALTI_HOST_NAME,
   ALTI_HOST_TYPE,
@@ -53,6 +45,13 @@ const {
   OSS_GET_TIMEOUT,
   TRANSFER_TIMEOUT
 } = process.env
+
+/**
+ * Bucket regions.
+ */
+const bucketRegionList = BUCKETS.split(';').map(x => x.split('@'))
+const S3BucketToRegion = new Map(bucketRegionList)
+const S3ChinaBuckets = S3_CHINA_BUCKETS.split(';')
 
 const log = ALTI_VERBOSE ? console.log : () => {}
 
