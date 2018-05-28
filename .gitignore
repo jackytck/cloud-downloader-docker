@@ -46,5 +46,8 @@ build
 lib
 dist
 
+# test docker
+run.sh
+
 # Mac
 .DS_Store

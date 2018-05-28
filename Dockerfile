@@ -11,7 +11,7 @@ RUN pip3 --no-cache-dir install --upgrade awscli
 
 WORKDIR /app
 COPY package.json .
-RUN yarn install --production
+RUN yarn install --production && chmod -R 777 .
 
 COPY dist dist
 
