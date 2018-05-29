@@ -27,3 +27,10 @@ docker ps
 docker logs cloud-downloader
 set +e
 ```
+
+#### .env
+```bash
+#!/bin/bash
+# set timezone
+TZ=Asia/Hong_Kong
+```
