@@ -49,9 +49,9 @@ const {
 /**
  * Bucket regions.
  */
-const bucketRegionList = BUCKETS.split(';').map(x => x.split('@'))
+const bucketRegionList = BUCKETS ? BUCKETS.split(';').map(x => x.split('@')) : []
 const S3BucketToRegion = new Map(bucketRegionList)
-const S3ChinaBuckets = S3_CHINA_BUCKETS.split(';')
+const S3ChinaBuckets = S3_CHINA_BUCKETS ? S3_CHINA_BUCKETS.split(';') : []
 
 const log = ALTI_VERBOSE ? console.log : () => {}
 
