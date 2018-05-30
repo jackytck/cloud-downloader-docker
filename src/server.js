@@ -156,8 +156,8 @@ const awsCliChina = new AwsCli({
   aws_access_key_id: process.env.AWS_CHINA_ACCESS_KEY_ID,
   aws_secret_access_key: process.env.AWS_CHINA_SECRET_ACCESS_KEY
 })
-const aliBuckets = process.env.ALI_BUCKETS.split(',')
-const aliRegions = process.env.ALI_REGIONS.split(',')
+const aliBuckets = process.env.ALI_BUCKETS ? process.env.ALI_BUCKETS.split(',') : []
+const aliRegions = process.env.ALI_REGIONS ? process.env.ALI_REGIONS.split(',') : []
 const ossCli = new Map()
 aliBuckets.forEach((bucket, i) => {
   const region = aliRegions[i]
