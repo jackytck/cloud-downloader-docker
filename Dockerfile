@@ -13,6 +13,4 @@ WORKDIR /app
 COPY . .
 RUN yarn && yarn build && chmod -R 777 .
 
-COPY dist dist
-
 CMD ["yarn", "start"]
