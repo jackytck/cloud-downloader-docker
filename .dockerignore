@@ -4,4 +4,6 @@ npm-debug.log
 .eslintrc
 LICENSE
 README.md
-src
+.travis.yml
+.gitignore
+dist
