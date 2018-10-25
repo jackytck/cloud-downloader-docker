@@ -1,0 +1,18 @@
+sudo: required
+language: node
+services: docker
+
+install:
+  - echo "install nothing!"
+
+script:
+  - echo "no tests!"
+
+after_success:
+  - |
+    if [[ "$TRAVIS_BRANCH" == "master" ]]; then
+      docker version
+      docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
+      docker build -t jackytck/cloud-downloader-docker:v1.0.1 .
+      docker push jackytck/cloud-downloader-docker:v1.0.1
+    fi

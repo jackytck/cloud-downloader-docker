@@ -22,7 +22,7 @@ For downloading files from cloud storage to local disk.
 ```bash
 #!/bin/bash
 set -e
-docker run --restart unless-stopped --env-file .env -v /etc/group:/etc/group:ro -v /etc/passwd:/etc/passwd:ro -u $( id -u $USER ):$( id -g $USER ) -v /mnt/data/user_drive:/mnt/data/user_drive --name alti-downloader -d jackytck/cloud-downloader-docker:v0.0.1
+docker run --restart unless-stopped --env-file .env -v /etc/group:/etc/group:ro -v /etc/passwd:/etc/passwd:ro -u $( id -u $USER ):$( id -g $USER ) -v /mnt/data/user_drive:/mnt/data/user_drive --name alti-downloader -d jackytck/cloud-downloader-docker:v1.0.1
 docker ps
 docker logs cloud-downloader
 set +e
