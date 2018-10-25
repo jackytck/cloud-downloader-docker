@@ -363,7 +363,7 @@ function extractInfo (file) {
       // file.vibrantColor = palette
 
       // giga-pixel
-      file.gigaPixel = Math.max(7990272, width * height) / 1000000000
+      file.gigaPixel = Math.max(2073600, width * height) / 1000000000
       const stats = await fs.stat(file.localPath)
 
       // file size
@@ -737,7 +737,7 @@ function transferModel (file) {
     try {
       log(`Transferring: ${file.iid} ${file.filename}`)
       // assume there is an extension
-      const remotePath = `${process.env.MASTER_DRIVE_MOUNT}/${file.pid}`
+      const remotePath = `${process.env.MASTER_DRIVE_MOUNT}/${file.pid}/objconvert`
       await fs.ensureDir(remotePath)
       await fs.copy(file.localPath, `${remotePath}/${file.filename}`)
       file.remotePath = `${remotePath}/${file.filename}`
