@@ -1,6 +1,6 @@
 ### Overview
 
-For downloading files from cloud storage to local disk.
+For downloading files from cloud storage or direct urls to local disk.
 
 #### Work Flow
 
@@ -17,6 +17,7 @@ For downloading files from cloud storage to local disk.
 * AWS S3 China
 * Aliyun OSS
 * Private Minio Server
+* Direct URLs
 
 #### Sample docker run
 ```bash
