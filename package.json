@@ -1,6 +1,6 @@
 {
   "name": "cloud-downloader-docker",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "author": "Jacky Tang",
   "license": "MIT",
   "scripts": {
@@ -25,7 +25,7 @@
     "minio": "^5.0.2",
     "moment": "^2.20.1",
     "p-timeout": "^2.0.1",
-    "sharp": "^0.20.2"
+    "sharp": "^0.21.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
