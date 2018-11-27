@@ -2,6 +2,7 @@ import AliOSS from 'ali-oss-extra'
 import AwsCli from 'aws-cli-js-jt'
 import { Client as MinioClient } from 'minio'
 import amqp from 'amqplib'
+import axios from 'axios'
 import base64 from 'base-64'
 import chalk from 'chalk'
 import crypto from 'crypto'
@@ -266,6 +267,36 @@ function downloadFromMinio (file) {
   })
 }
 
+function downloadFromURL (file) {
+  return new Promise(async (resolve, reject) => {
+    try {
+      const { bucket, pid, filename } = file
+      const url = bucket
+      const localDir = `./data/downloading/${pid}`
+      const localPath = `${localDir}/${filename}`
+      file.localPath = localPath
+
+      await fs.ensureDir(localDir)
+      const res = await axios({
+        method: 'GET',
+        url,
+        responseType: 'stream'
+      })
+      res.data.pipe(fs.createWriteStream(localPath))
+
+      res.data.on('end', () => {
+        resolve()
+      })
+
+      res.data.on('error', err => {
+        reject(err)
+      })
+    } catch (err) {
+      reject(err)
+    }
+  })
+}
+
 /**
  * Download single file from S3 or OSS.
  * Expects file to have:
@@ -293,6 +324,9 @@ function download (file) {
           break
         case 'MINIO':
           await downloadFromMinio(file)
+          break
+        case 'URL':
+          await downloadFromURL(file)
           break
         default:
           file.state = 'Failed'
@@ -603,6 +637,8 @@ function cleanCloud (file) {
           break
         case 'MINIO':
           await cleanMinio(file)
+          break
+        case 'URL':
           break
         default:
           file.state = 'Failed'
