@@ -16,6 +16,7 @@
     "altiimagemagick": "^0.1.6",
     "amqplib": "^0.5.2",
     "aws-cli-js-jt": "^0.0.2",
+    "axios": "^0.18.0",
     "base-64": "^0.1.0",
     "chalk": "^2.3.1",
     "dotenv": "^5.0.0",
