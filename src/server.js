@@ -270,18 +270,24 @@ function downloadFromMinio (file) {
 function downloadFromURL (file) {
   return new Promise(async (resolve, reject) => {
     try {
-      const { bucket, pid, filename } = file
+      const { bucket, pid, filename, token } = file
       const url = bucket
       const localDir = `./data/downloading/${pid}`
       const localPath = `${localDir}/${filename}`
       file.localPath = localPath
 
       await fs.ensureDir(localDir)
-      const res = await axios({
+      const config = {
         method: 'GET',
         url,
         responseType: 'stream'
-      })
+      }
+      if (token) {
+        config.headers = {
+          Authorization: `Bearer ${token}`
+        }
+      }
+      const res = await axios(config)
       res.data.pipe(fs.createWriteStream(localPath))
 
       res.data.on('end', () => {
